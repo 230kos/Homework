@@ -8,3 +8,7 @@
 python <name>.py - из корня репозитория проекта
 python <_path_>name.py - из другой папки  
 <_path_> - путь к файлу <name>.py проекта Homework10
+
+## Тестирование
+pytest tests/ - все тесты из папки tests
+pytest tests/<test_name>.py - запуск конкретного теста 

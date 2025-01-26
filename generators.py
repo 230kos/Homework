@@ -2,7 +2,7 @@ from typing import Any, Dict, Iterable, Iterator
 
 
 def filter_by_currency(data_transactions: Iterable[Dict[str, Any]], currency_code: str) -> Iterator[Dict[str, Any]]:
-    """Функция, которая поочередно выдает транзакции, где валюта операции соответствует заданной"""
+    """Функция, которая поочерёдно выдаёт транзакции, где валюта операции соответствует заданной"""
     for transaction in data_transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency_code:
             yield transaction
@@ -15,7 +15,7 @@ def transaction_descriptions(data_transactions: Iterable[Dict[str, Any]]) -> Ite
 
 
 def card_number_generator(start: int, end: int) -> Iterator[str]:
-    """генератор, который выдает номера банковских карт в формате XXXX XXXX XXXX XXXX, где X - цифра от 0 до 9"""
+    """генератор, который выдаёт номера банковских карт в формате XXXX XXXX XXXX XXXX, где X - цифра от 0 до 9"""
     for number in range(start, end + 1):
         yield f"{number:016d}"[:4] + " " + f"{number:016d}"[4:8] + " " + f"{number:016d}"[
             8:12

@@ -1,9 +1,11 @@
 from typing import Any
 
-def log (filename: str) -> Any:
+
+def log(filename: str) -> Any:
     """Декоратор, который записывает логи работы функции"""
+
     def my_decorator(func: Any) -> Any:
-        def wrapper(*args: int, **kwargs: int) -> int:
+        def wrapper(*args: int, **kwargs: int) -> Any:
             if filename:
                 try:
                     result = func(*args, **kwargs)
@@ -21,20 +23,22 @@ def log (filename: str) -> Any:
                     result = func(*args, **kwargs)
                     print("Function finished\n")
                     log_message = f"my function ok, result {result}\n"
-                    print (log_message)
+                    print(log_message)
                 except Exception as e:
                     print("Function finished\n")
                     result = "Error"
                     log_message = f"My function error: {e}. Inputs: {args, kwargs}\n"
                     print(log_message)
             return result
+
         return wrapper
+
     return my_decorator
 
+
 @log(filename="mylog.txt")
-def my_function(x, y):
+def my_function(x: int, y: int) -> Any:
     return x + y
 
-my_function(1, 2)
 
-    
+my_function(1, 2)

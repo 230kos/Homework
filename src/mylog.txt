@@ -1,6 +1,3 @@
-
-
-
 Function started
 Function finished
 My function ok, result 3

@@ -8,5 +8,3 @@ def test_my_function_ok(capsys):
         my_function(1,2)
         captured = capsys.readouterr()
         assert captured.out == "Function started\nFunction finished\nMy function ok, result 3\n\n"
-
-

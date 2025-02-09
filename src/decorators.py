@@ -1,35 +1,29 @@
-from typing import Any
+from typing import Any, Optional
 
 
-def log(filename: str) -> Any:
+def log(filename: Optional[str] = None) -> Any:
     """Декоратор, который записывает логи работы функции"""
 
     def my_decorator(func: Any) -> Any:
         def wrapper(*args: int, **kwargs: int) -> Any:
-            if filename:
-                try:
-                    result = func(*args, **kwargs)
-                    log_message = f"My function ok, result {result}\n"
-                except Exception as e:
-                    result = "Error"
-                    log_message = f"My function error: {e}. Inputs: {args, kwargs}\n"
-                with open(filename, "a") as file:
-                    file.write("Function started\n")
-                    file.write("Function finished\n")
-                    file.write(log_message)
-            else:
-                try:
-                    print("Function started\n")
-                    result = func(*args, **kwargs)
-                    print("Function finished\n")
-                    log_message = f"my function ok, result {result}\n"
-                    print(log_message)
-                except Exception as e:
-                    print("Function finished\n")
-                    result = "Error"
-                    log_message = f"My function error: {e}. Inputs: {args, kwargs}\n"
-                    print(log_message)
-            return result
+            try:
+                result = func(*args, **kwargs)
+                if filename is not None:
+                    with open(filename, "a") as file:
+                        file.write(f"Function started\nFunction finished\n{func.__name__} ok, result {result}\n")
+                else:
+                    print(f"Function started\nFunction finished\n{func.__name__} ok, result {result}\n")
+            except Exception as error:
+                if filename is not None:
+                    with open(filename, "a") as file:
+                        file.write(
+                            f"Function started\nFunction finished\n{func.__name__} error: {error}. Inputs: {args, kwargs}\n"
+                        )
+                else:
+                    print(
+                        f"Function started\nFunction finished\n{func.__name__} error: {error}. Inputs: {args, kwargs}\n"
+                    )
+                raise error
 
         return wrapper
 
@@ -37,6 +31,7 @@ def log(filename: str) -> Any:
 
 
 @log(filename="mylog.txt")
+# @log()
 def my_function(x: int, y: int) -> Any:
     return x + y
 

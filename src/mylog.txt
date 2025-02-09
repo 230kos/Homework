@@ -1,3 +1,48 @@
 Function started
 Function finished
 My function ok, result 3
+Function started
+Function finished
+My function ok, result 3
+Function started
+Function finished
+My function ok, result 4
+Function started
+Function finished
+My function ok, result 4
+Function started
+Function finished
+My function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: ((1, '3'), {})
+Function started
+Function finished
+my_function1 ok, result 4
+Function started
+Function finished
+my_function1 ok, result 4
+Function started
+Function finished
+my_function1 ok, result 4
+Function started
+Function finished
+my_function1 ok, result 5
+Function started
+Function finished
+my_function1 ok, result 6
+Function started
+Function finished
+my_function ok, result 6
+Function started
+Function finished
+my_function ok, result 6
+Function started
+Function finished
+my_function ok, result 2
+Function started
+Function finished
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: ((1, '1'), {})
+Function started
+Function finished
+my_function error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: ((1, '2'), {})
+Function started
+Function finished
+my_function ok, result 3

@@ -7,7 +7,7 @@
 ## Запуск приложения  
 python <name>.py - из корня репозитория проекта
 python <_path_>name.py - из другой папки  
-<_path_> - путь к файлу <name>.py проекта Homework10
+<_path_> - путь к файлу <name>.py проекта Homework
 
 ## Тестирование
 pytest tests/ - все тесты из папки tests

@@ -13,6 +13,7 @@ def log(filename: Optional[str] = None) -> Any:
                         file.write(f"Function started\nFunction finished\n{func.__name__} ok, result {result}\n")
                 else:
                     print(f"Function started\nFunction finished\n{func.__name__} ok, result {result}\n")
+                return result
             except Exception as error:
                 if filename is not None:
                     with open(filename, "a") as file:

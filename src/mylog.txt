@@ -49,3 +49,6 @@ my_function ok, result 3
 Function started
 Function finished
 my_function ok, result 3
+Function started
+Function finished
+my_function ok, result 3

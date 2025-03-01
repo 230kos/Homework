@@ -2,6 +2,10 @@ import logging
 import os
 from typing import Any
 
+# Создаем папку logs, если она не существует
+log_dir = os.path.join("..", "logs")
+os.makedirs(log_dir, exist_ok=True)
+
 # Настройка логгера для модуля masks
 logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)  # Уровень DEBUG
@@ -11,7 +15,7 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
 
 # Создание обработчика для записи логов в файл
-file_handler = logging.FileHandler(os.path.join("..", "logs", "masks.log"))  # Лог-файл в папке log
+file_handler = logging.FileHandler(os.path.join("..", "logs", "masks.log"))  # Лог-файл в папке logs
 file_handler.setLevel(logging.DEBUG)
 
 # Создание форматтера для логов

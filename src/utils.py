@@ -3,6 +3,10 @@ import logging
 import os
 from typing import Any, Dict, List
 
+# Создаем папку logs, если она не существует
+log_dir = os.path.join("..", "logs")
+os.makedirs(log_dir, exist_ok=True)
+
 # Настройка логгера для модуля utils
 logger = logging.getLogger("utils")
 logger.setLevel(logging.DEBUG)  # Уровень DEBUG

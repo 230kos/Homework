@@ -62,9 +62,11 @@ def load_transactions(file_path: str) -> List[Dict[str, Any]]:
         return []
 
 
+"""
 # Пример использования
 if __name__ == "__main__":
     # Путь до файла operations.json
     file_path = os.path.join("..", "data", "operations.json")
     transactions = load_transactions(file_path)
     print(transactions)
+"""

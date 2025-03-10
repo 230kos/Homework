@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import Union
 
 from src.masks import get_mask_account, get_mask_card_number
@@ -23,9 +23,23 @@ def mask_account_card(type_and_number: Union[str]) -> Union[str]:
         return "Неверный номер карты или счёта"
 
 
-def get_date(user_date: Union[str]) -> Union[str]:
-    """функция, которая принимает на вход строку с датой в формате 2024-03-11T02:26:18.671407 и
-    возвращает строку с датой в формате ДД.ММ.ГГГГ"""
-    date_format = datetime.datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
-    new_date = date_format.strftime("%d.%m.%Y")
-    return new_date
+def get_date(user_date: str) -> str:
+    """
+    Преобразует строку с датой в формате ISO (с микросекундами или с Z) в строку с датой в формате ДД.ММ.ГГГГ.
+
+    :param user_date: Строка с датой в формате ISO (например, '2020-01-01T05:03:33Z' или '2020-01-01T05:03:33.123456').
+    :return: Строка с датой в формате ДД.ММ.ГГГГ.
+    """
+    try:
+        # Пытаемся распарсить дату с микросекундами
+        date_format = datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
+    except ValueError:
+        try:
+            # Если не получилось, пробуем распарсить дату с Z
+            date_format = datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%SZ")
+        except ValueError:
+            # Если и это не получилось, возвращаем "N/A" или выбрасываем исключение
+            return "N/A"
+
+    # Преобразуем дату в формат ДД.ММ.ГГГГ
+    return date_format.strftime("%d.%m.%Y")

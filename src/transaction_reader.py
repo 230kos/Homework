@@ -17,7 +17,7 @@ def load_transactions_csv(file_path: str) -> list[dict[Any, Any]]:
 
     try:
         # Чтение CSV-файла
-        df: pd.DataFrame = pd.read_csv(file_path)
+        df: pd.DataFrame = pd.read_csv(file_path, delimiter=";")
         # Преобразование DataFrame в список словарей
         return df.to_dict("records")
     except (pd.errors.EmptyDataError, pd.errors.ParserError):
@@ -44,6 +44,7 @@ def load_transactions_excel(file_path: str) -> list[dict[Any, Any]]:
         return []
 
 
+
 # Пример использования
 if __name__ == "__main__":
     # Путь до файла transactions.csv
@@ -54,4 +55,5 @@ if __name__ == "__main__":
     # Путь до файла transactions_excel.xlsx
     excel_file_path: str = os.path.join("..", "data", "transactions_excel.xlsx")
     excel_transactions: List[Dict[str, Any]] = load_transactions_excel(excel_file_path)
-    print(excel_transactions)
+   # print(excel_transactions)
+
